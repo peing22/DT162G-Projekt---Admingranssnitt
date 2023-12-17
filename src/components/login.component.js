@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useAuth } from "../context/auth.context";
 
 export default function Login() {
@@ -9,20 +9,22 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            // Skicka förfrågan till din backend för att få användaruppgifter
-            const response = await axios.post("http://localhost:3050/login",
-                {
-                    username,
-                    password,
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
+            await login(username, password);
 
-            // Anropar metod och skickar med respons
-            login(response.data);
+            // // Skicka förfrågan till din backend för att få användaruppgifter
+            // const response = await axios.post("http://localhost:3050/login",
+            //     {
+            //         username,
+            //         password,
+            //     },
+            //     {
+            //         headers: {
+            //             "Content-Type": "application/json"
+            //         }
+            //     });
+
+            // // Anropar metod och skickar med respons
+            // login(response.data);
 
         } catch (error) {
             console.error("Error-meddelande:", error);

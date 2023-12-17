@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
+import axiosService from "../services/axios.service";
+import tokenService from "../services/token.service";
 
 // Skapar autentiseringskontext med createContext
 const AuthContext = createContext();
@@ -7,14 +9,19 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setLoggedIn] = useState(false);
 
-    const login = (user) => {
-        
-        // Lagrar användaruppgifter i localStorage
-        localStorage.setItem("user", JSON.stringify(user));
+    const login = async (username, password) => {
 
-        // Implementera logik för att sätta autentiseringsstatus baserat på accessToken/refreshToken
-        setLoggedIn(true);
-    };
+        const response = await axiosService
+            .post("/login", {
+                username,
+                password
+            });
+        if (response.data.accessToken) {
+            tokenService.setUser(response.data);
+            setLoggedIn(true);
+        }
+        return response.data;
+    }
 
     const logout = () => {
 
@@ -27,7 +34,7 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
-};
+}
 
 // Exporterar hook som kan användas i andra komponenter
 export const useAuth = () => useContext(AuthContext);
