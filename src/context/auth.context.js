@@ -7,15 +7,25 @@ const AuthContext = createContext();
 
 // Exporterar komponent för att hantera autentiseringsstatus
 export const AuthProvider = ({ children }) => {
+
+    /* 
+    Skapar en tillståndsvariabel som håller reda på om en användare är inloggad 
+    eller inte. Tillståndsvariabeln initieras till false och en funktion skapas 
+    för att uppdatera tillståndsvariabeln.
+    */
     const [isLoggedIn, setLoggedIn] = useState(false);
 
+    // Funktion som ansopas när en användare försöker logga in
     const login = async (username, password) => {
 
+        // Skickar en autentiseringsförfrågan till backend
         const response = await axiosService
             .post("/login", {
                 username,
                 password
             });
+
+        // Sparar användarinformation och sätter tillståndsvariabeln till true
         if (response.data.accessToken) {
             tokenService.setUser(response.data);
             setLoggedIn(true);
@@ -23,12 +33,27 @@ export const AuthProvider = ({ children }) => {
         return response.data;
     }
 
-    const logout = () => {
+    // Funktion som anropas när en användare loggar ut
+    const logout = async () => {
 
-        // Implementera logik för att logga ut och uppdatera autentiseringsstatus
-        setLoggedIn(false);
-    };
+        try {
+            // Hämtar användarinformation och lagrar ID i en variabel
+            const user = tokenService.getUser();
+            const userId = user.id;
 
+            // Skickar en utloggningsförfrågan till backend
+            await axiosService.post("/logout/" + userId);
+
+            // Tar bort lagrad användarinformation och sätter tillståndsvariabeln till false
+            tokenService.removeUser();
+            setLoggedIn(false);
+
+        } catch (error) {
+            console.error("Meddelande:", error);
+        }
+    }
+
+    // Returnerar kontextvärden till underordnade komponenter
     return (
         <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
             {children}

@@ -1,40 +1,38 @@
 import React, { useState } from "react";
-// import axios from "axios";
 import { useAuth } from "../context/auth.context";
 
+// Exporterar login-komponent
 export default function Login() {
+
+    // Skapar tillståndsvariabler satta till tom textsträng och funktioner för att uppdatera deras värden
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    // Använder useAuth-hook för att hämta login-metoden från autentiseringskontexten
     const { login } = useAuth();
 
+    // Funktion som anropas vid klick på Logga in-knappen
     const handleLogin = async () => {
         try {
+            // Återställer tidigare felmeddelanden
+            setError("");
+
+            // Anropar metod för att logga in och skickar med värden
             await login(username, password);
-
-            // // Skicka förfrågan till din backend för att få användaruppgifter
-            // const response = await axios.post("http://localhost:3050/login",
-            //     {
-            //         username,
-            //         password,
-            //     },
-            //     {
-            //         headers: {
-            //             "Content-Type": "application/json"
-            //         }
-            //     });
-
-            // // Anropar metod och skickar med respons
-            // login(response.data);
 
         } catch (error) {
             console.error("Error-meddelande:", error);
-            // Hantera fel här, t.ex. visa ett felmeddelande för användaren
+
+            // Visar felmeddelande för användaren om inloggning misslyckas
+            setError(error.response?.data.message || "Ett fel uppstod vid inloggning!");
         }
     };
 
+    // Renderar användargränssnitt med formulär och visning av eventuella felmeddelanden
     return (
         <div className="login">
-            <h2>Logga in</h2>
+            <h1>Logga in</h1>
             <form>
                 <label>
                     Användarnamn:
@@ -57,6 +55,7 @@ export default function Login() {
                 <button type="button" onClick={handleLogin}>
                     Logga in
                 </button>
+                {error && <p style={{ color: "red" }}>{error}</p>}
             </form>
         </div>
     );

@@ -1,13 +1,12 @@
 import axios from "axios";
 import tokenService from "./token.service";
 
+// Skapar en instans av Axios med specifika konfigureringsalternativ
 const instance = axios.create({
-    baseURL: "http://localhost:3050",
-    headers: {
-        "Content-Type": "application/json"
-    }
+    baseURL: "http://localhost:3050"
 });
 
+// Skapar interceptor för att lägga till accessToken i headerinformationen innan förfrågan 
 instance.interceptors.request.use(
     (config) => {
         const token = tokenService.getLocalAccessToken();
@@ -21,6 +20,7 @@ instance.interceptors.request.use(
     }
 );
 
+// Skapar interceptor för att hantera svar från backend och uppdatera accessToken vid behov
 instance.interceptors.response.use(
     (res) => {
         return res;
@@ -51,4 +51,5 @@ instance.interceptors.response.use(
     }
 );
 
+// Exporterar instansen
 export default instance;

@@ -3,6 +3,7 @@ import Login from "./components/login.component";
 import Admin from "./components/admin.component";
 import { AuthProvider, useAuth } from "./context/auth.context";
 
+// Exporterar huvudkomponent för applikationen
 export default function App() {
   return (
     <AuthProvider>
