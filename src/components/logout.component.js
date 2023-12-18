@@ -14,7 +14,7 @@ export default function Logout() {
             await logout();
 
         } catch (error) {
-            console.error("Error-meddelande:", error);
+            console.error("Felmeddelande:", error);
         }
     };
 

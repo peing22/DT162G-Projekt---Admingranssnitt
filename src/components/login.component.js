@@ -22,7 +22,7 @@ export default function Login() {
             await login(username, password);
 
         } catch (error) {
-            console.error("Error-meddelande:", error);
+            console.error("Felmeddelande:", error);
 
             // Visar felmeddelande för användaren om inloggning misslyckas
             setError(error.response?.data.message || "Ett fel uppstod vid inloggning!");

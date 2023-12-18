@@ -20,11 +20,10 @@ const MainContent = () => {
 
   return (
     <>
+    {/* Renderar olika komponenter beroende på om användaren är inloggad eller inte */}
       {isLoggedIn ? (
-        // Renderar Admin-komponent om användaren är inloggad
         <Admin />
       ) : (
-        // Renderar Login-komponent om användaren inte är inloggad
         <Login />
       )}
     </>
