@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import axiosService from "../services/axios.service";
 import tokenService from "../services/token.service";
 
@@ -15,7 +15,17 @@ export const AuthProvider = ({ children }) => {
     */
     const [isLoggedIn, setLoggedIn] = useState(false);
 
-    // Funktion som ansopas när en användare försöker logga in
+    // Använder react-hook för att hämta användarinformation från localStorage
+    useEffect(() => {
+        const user = tokenService.getUser();
+
+        // Sätter tillståndsvariabel till true om användarinformation finns lagrad
+        if (user && user.accessToken) {
+            setLoggedIn(true);
+        }
+    }, []);
+
+    // Funktion som anropas när en användare försöker logga in
     const login = async (username, password) => {
 
         // Skickar en autentiseringsförfrågan till backend
