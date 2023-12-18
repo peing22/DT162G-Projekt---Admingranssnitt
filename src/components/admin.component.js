@@ -17,6 +17,10 @@ export default function Admin() {
     const [editingDescription, setEditingDescription] = useState("");
     const [updateError, setUpdateError] = useState("");
     const [deleteError, setDeleteError] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [registerError, setRegisterError] = useState("");
+    const [successRegisterMessage, setSuccessRegisterMessage] = useState("");
 
     // Använder react-hook för att anropa funktion när komponenten renderas
     useEffect(() => {
@@ -107,7 +111,7 @@ export default function Admin() {
             // Skapar en objektstruktur med uppdateringsdata
             const updateData = {
                 exercisename: editingExercisename,
-                description: editingDescription,
+                description: editingDescription
             }
 
             // Utför put-anrop och skickar med uppdateringsdata för att uppdatera vald övning
@@ -180,6 +184,58 @@ export default function Admin() {
 
             // Visar felmeddelande för användaren
             setDeleteError(error.response?.data.message || "Ett fel uppstod vid radering av övning!");
+        }
+    }
+
+    // Funktion som anropas vid klick på knapp för att registrera en administratör
+    const handleRegisterUser = async (e) => {
+
+        // Förhindrar att data skickas och att sidan laddar om när formuläret skickas
+        e.preventDefault();
+
+        try {
+            // Återställer felmeddelande
+            setRegisterError("");
+
+            // Skapar en objektstruktur med administratörsdata
+            const adminData = {
+                username: username,
+                password: password
+            }
+
+            // Utför post-anrop och skickar med administratörsdata
+            const response = await axiosService.post("/register", adminData);
+
+            // Loggar svaret från servern
+            console.log("Administratör tillagd:", response.data);
+
+            // Återställer tillståndsvariabler efter framgångsrikt post-anrop
+            setUsername("");
+            setPassword("");
+
+            // Nollställer formuläret
+            e.target.reset();
+
+            // Sätter ett bekräftelse-meddelande
+            setSuccessRegisterMessage("Administratör har lagts till!");
+
+            // Tar bort meddelandet efter 5 sekunder
+            setTimeout(() => {
+                setSuccessRegisterMessage("");
+            }, 5000);
+
+        } catch (error) {
+
+            // Loggar felmeddelande
+            console.error("Felmeddelande:", error);
+
+            // Visar felmeddelande för användaren om inloggning misslyckas
+            setRegisterError(error.response?.data.message || "Ett fel uppstod vid registrering!");
+
+            // Tar bort felmeddelandet efter 5 sekunder
+            setTimeout(() => {
+                setRegisterError("");
+            }, 5000);
         }
     }
 
@@ -263,6 +319,32 @@ export default function Admin() {
                     )}
                 </div>
             ))}
+            <h2>Lägg till administratör</h2>
+            <form onSubmit={handleRegisterUser}>
+                <label>
+                    Användarnamn:
+                    <br />
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </label>
+                <br />
+                <label>
+                    Lösenord:
+                    <br />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+                <br />
+                <button type="submit">Lägg till<i className="fa-solid fa-plus"></i></button>
+                {registerError && <p style={{ color: "red" }}>{registerError}</p>}
+                {successRegisterMessage && <p style={{ color: "green" }}>{successRegisterMessage}</p>}
+            </form>
         </div>
     );
 }

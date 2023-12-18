@@ -34,7 +34,7 @@ export default function Login() {
                 setError("");
             }, 5000);
         }
-    };
+    }
 
     // Renderar användargränssnitt med formulär och visning av eventuella felmeddelanden
     return (
@@ -43,6 +43,7 @@ export default function Login() {
             <form>
                 <label>
                     Användarnamn:
+                    <br />
                     <input
                         type="text"
                         value={username}
@@ -52,6 +53,7 @@ export default function Login() {
                 <br />
                 <label>
                     Lösenord:
+                    <br />
                     <input
                         type="password"
                         value={password}
