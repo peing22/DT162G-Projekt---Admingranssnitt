@@ -72,6 +72,8 @@ export default function Admin() {
 
             // Loggar felmeddelande
             console.error("Felmeddelande:", error);
+
+            // Visar felmeddelande för användaren
             setAddError(error.response?.data.message || "Ett fel uppstod vid tillägg av övning!");
 
             // Tar bort felmeddelandet efter 5 sekunder
@@ -126,6 +128,8 @@ export default function Admin() {
 
             // Loggar felmeddelande
             console.error("Felmeddelande:", error);
+
+            // Visar felmeddelande för användaren
             setUpdateError(error.response?.data.message || "Ett fel uppstod vid uppdatering av övning!");
 
             // Tar bort meddelandet efter 5 sekunder
@@ -173,6 +177,8 @@ export default function Admin() {
 
             // Loggar felmeddelande
             console.error("Felmeddelande:", error);
+
+            // Visar felmeddelande för användaren
             setDeleteError(error.response?.data.message || "Ett fel uppstod vid radering av övning!");
         }
     }
@@ -209,7 +215,7 @@ export default function Admin() {
                     <input type="file" onChange={handleFileChange} />
                 </label>
                 <br />
-                <button type="submit">Spara</button>
+                <button type="submit">Lägg till<i className="fa-solid fa-plus"></i></button>
             </form>
             {addError && <p style={{ color: "red" }}>{addError}</p>}
             {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
@@ -239,7 +245,7 @@ export default function Admin() {
                             </label>
                             <br />
                             {updateError && <p style={{ color: "red" }}>{updateError}</p>}
-                            <button onClick={handleUpdateExercise}>Spara</button>
+                            <button onClick={handleUpdateExercise}>Spara<i className="fa-solid fa-arrows-rotate"></i></button>
                             <button onClick={handleCancelEdit}>Avbryt</button>
                         </>
                     ) : (
@@ -250,8 +256,8 @@ export default function Admin() {
                                 Din webbläsare kan inte visa videon...
                             </video>
                             <br />
-                            <button onClick={() => handleSelectExercise(exercise)}>Redigera</button>
-                            <button onClick={() => handleDeleteExercise(exercise._id)}>Radera</button>
+                            <button onClick={() => handleSelectExercise(exercise)}>Redigera<i className="fa-solid fa-pen-to-square"></i></button>
+                            <button onClick={() => handleDeleteExercise(exercise._id)}>Radera<i className="fa-solid fa-trash-can"></i></button>
                             {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
                         </>
                     )}

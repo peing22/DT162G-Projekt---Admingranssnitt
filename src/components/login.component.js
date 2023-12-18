@@ -22,10 +22,17 @@ export default function Login() {
             await login(username, password);
 
         } catch (error) {
+
+            // Loggar felmeddelande
             console.error("Felmeddelande:", error);
 
             // Visar felmeddelande för användaren om inloggning misslyckas
             setError(error.response?.data.message || "Ett fel uppstod vid inloggning!");
+
+            // Tar bort felmeddelandet efter 5 sekunder
+            setTimeout(() => {
+                setError("");
+            }, 5000);
         }
     };
 
@@ -52,9 +59,7 @@ export default function Login() {
                     />
                 </label>
                 <br />
-                <button type="button" onClick={handleLogin}>
-                    Logga in
-                </button>
+                <button type="button" onClick={handleLogin}>Logga in<i className="fa-solid fa-right-to-bracket"></i></button>
                 {error && <p style={{ color: "red" }}>{error}</p>}
             </form>
         </div>

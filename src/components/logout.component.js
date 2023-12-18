@@ -21,7 +21,7 @@ export default function Logout() {
     // Renderar Logga ut-knapp
     return (
         <div className="logout">
-            <button onClick={handleLogout}>Logga ut</button>
+            <button onClick={handleLogout}>Logga ut<i className="fa-solid fa-right-from-bracket"></i></button>
         </div>
     );
 }
