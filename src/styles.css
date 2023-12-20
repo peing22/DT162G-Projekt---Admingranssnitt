@@ -5,6 +5,7 @@ body {
     font-size: 14px;
     line-height: 22px;
     color: #0d1f2b;
+    background-color: #e9f4fb;
 }
 
 @media (min-width: 600px) {
@@ -18,7 +19,6 @@ body {
 
 /* HUVUDINNEHÅLL */
 main {
-    padding: 20px;
     max-width: 600px;
     margin: auto;
 }
@@ -89,6 +89,7 @@ h3 {
 @media (min-width: 600px) {
     .login {
         padding: 50px;
+        margin-top: 20vh;
     }
 }
 
@@ -116,6 +117,7 @@ h3 {
 @media (min-width: 600px) {
     .admin {
         padding: 50px;
+        margin: 40px 0;
     }
 
     .admin h1 {
