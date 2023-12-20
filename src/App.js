@@ -19,13 +19,13 @@ const MainContent = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <>
+    <main>
     {/* Renderar olika komponenter beroende på om användaren är inloggad eller inte */}
       {isLoggedIn ? (
         <Admin />
       ) : (
         <Login />
       )}
-    </>
+    </main>
   );
 }

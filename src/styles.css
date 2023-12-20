@@ -1,0 +1,162 @@
+/* BODY */
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 22px;
+    color: #0d1f2b;
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: 20px;
+        line-height: 32px;
+        background-color: #0d1f2b;
+    }
+}
+
+
+/* HUVUDINNEHÅLL */
+main {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Rubriker */
+h1 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 600px) {
+    h1 {
+        font-size: 48px;
+        line-height: 59px;
+        margin-bottom: 25px;
+    }
+}
+
+h2 {
+    width: 100%;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid #497697;
+}
+
+@media (min-width: 600px) {
+    h2 {
+        font-size: 30px;
+    }
+}
+
+/* LOGGA IN */
+.login {
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+@media (min-width: 600px) {
+    .login {
+        padding: 50px;
+    }
+}
+
+.login input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #0d1f2b;
+    border-radius: 5px;
+}
+
+/* Logga in-knapp */
+.login button {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #497697;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #17364a inset, 0 0 2px #17364a inset;
+}
+
+@media (min-width: 600px) {
+    .login button {
+        height: 40px;
+    }
+}
+
+.login button:hover {
+    background-color: #17364a;
+    cursor: pointer;
+}
+
+/* Felmeddelande */
+.login-error {
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: 500;
+    line-height: normal;
+    color: rgb(200, 0, 0);
+}
+
+/* ADMINISTRERA */
+.admin {
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+@media (min-width: 600px) {
+    .admin {
+        padding: 50px;
+    }
+}
+
+/* Logga ut-knapp */
+.logout button {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 30px;
+    background-color: #497697;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #17364a inset, 0 0 2px #17364a inset;
+}
+
+@media (min-width: 600px) {
+    .logout button {
+        height: 40px;
+    }
+}
+
+.logout button:hover {
+    background-color: #17364a;
+    cursor: pointer;
+}
+
+
+/* IKONER */
+.fa-solid {
+    padding-left: 5px;
+}

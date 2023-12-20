@@ -275,7 +275,7 @@ export default function Admin() {
             </form>
             {addError && <p style={{ color: "red" }}>{addError}</p>}
             {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-            <h2>Befintliga övningar</h2>
+            <h2>Tillagda övningar</h2>
             {exercises.map((exercise) => (
                 <div key={exercise._id}>
                     {selectedExercise === exercise ? (
