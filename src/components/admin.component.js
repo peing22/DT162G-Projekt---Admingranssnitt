@@ -244,7 +244,7 @@ export default function Admin() {
         <div className="admin">
             <Logout />
             <h1>Administrera</h1>
-            <form onSubmit={handleAddExercise}>
+            <form onSubmit={handleAddExercise} className="add-exercise">
                 <h2>Lägg till övning</h2>
                 <label>
                     Namn:
@@ -271,16 +271,16 @@ export default function Admin() {
                     <input type="file" onChange={handleFileChange} />
                 </label>
                 <br />
+                {addError && <p className="error-msg">{addError}</p>}
+                {successMessage && <p className="success-msg">{successMessage}</p>}
                 <button type="submit">Lägg till<i className="fa-solid fa-plus"></i></button>
             </form>
-            {addError && <p style={{ color: "red" }}>{addError}</p>}
-            {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
             <h2>Tillagda övningar</h2>
             {exercises.map((exercise) => (
-                <div key={exercise._id}>
+                <div key={exercise._id} className="added-exercise">
                     {selectedExercise === exercise ? (
                         <>
-                            <h3>Redigera övning</h3>
+                            <h3>Redigera</h3>
                             <label>
                                 Namn:
                                 <br />
@@ -300,27 +300,31 @@ export default function Admin() {
                                 />
                             </label>
                             <br />
-                            {updateError && <p style={{ color: "red" }}>{updateError}</p>}
-                            <button onClick={handleUpdateExercise}>Spara<i className="fa-solid fa-arrows-rotate"></i></button>
-                            <button onClick={handleCancelEdit}>Avbryt</button>
+                            {updateError && <p className="error-msg">{updateError}</p>}
+                            <button onClick={handleUpdateExercise} className="save-btn">Spara<i className="fa-solid fa-arrows-rotate"></i></button>
+                            <button onClick={handleCancelEdit} className="cancel-btn">Avbryt</button>
                         </>
                     ) : (
                         <>
                             <h3>{exercise.exercisename}</h3>
+                            
+                            <div className="video-container">
+                                <div className="video-wrap">
+                                    <video src={`http://localhost:3001/uploads/${exercise.filename}`} controls>
+                                        Din webbläsare kan inte visa videon...
+                                    </video>
+                                </div>
+                            </div>
                             <p>{exercise.description}</p>
-                            <video src={`http://localhost:3001/uploads/${exercise.filename}`} width={100} controls>
-                                Din webbläsare kan inte visa videon...
-                            </video>
-                            <br />
-                            <button onClick={() => handleSelectExercise(exercise)}>Redigera<i className="fa-solid fa-pen-to-square"></i></button>
-                            <button onClick={() => handleDeleteExercise(exercise._id)}>Radera<i className="fa-solid fa-trash-can"></i></button>
-                            {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
+                            <button onClick={() => handleSelectExercise(exercise)} className="edit-btn">Redigera<i className="fa-solid fa-pen-to-square"></i></button>
+                            <button onClick={() => handleDeleteExercise(exercise._id)} className="delete-btn">Radera<i className="fa-solid fa-trash-can"></i></button>
+                            {deleteError && <p className="error-msg">{deleteError}</p>}
                         </>
                     )}
                 </div>
             ))}
             <h2>Lägg till administratör</h2>
-            <form onSubmit={handleRegisterUser}>
+            <form onSubmit={handleRegisterUser} className="add-admin">
                 <label>
                     Användarnamn:
                     <br />
@@ -341,9 +345,9 @@ export default function Admin() {
                     />
                 </label>
                 <br />
+                {registerError && <p className="error-msg">{registerError}</p>}
+                {successRegisterMessage && <p className="success-msg">{successRegisterMessage}</p>}
                 <button type="submit">Lägg till<i className="fa-solid fa-plus"></i></button>
-                {registerError && <p style={{ color: "red" }}>{registerError}</p>}
-                {successRegisterMessage && <p style={{ color: "green" }}>{successRegisterMessage}</p>}
             </form>
         </div>
     );

@@ -61,8 +61,8 @@ export default function Login() {
                     />
                 </label>
                 <br />
+                {error && <p className="error-msg">{error}</p>}
                 <button type="button" onClick={handleLogin}>Logga in<i className="fa-solid fa-right-to-bracket"></i></button>
-                {error && <p className="login-error">{error}</p>}
             </form>
         </div>
     );
