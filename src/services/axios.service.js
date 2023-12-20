@@ -3,7 +3,7 @@ import tokenService from "./token.service";
 
 // Skapar en instans av Axios med specifika konfigureringsalternativ
 const instance = axios.create({
-    baseURL: "http://localhost:3050"
+    baseURL: "http://localhost:3001"
 });
 
 // Skapar interceptor för att lägga till accessToken i headerinformationen innan förfrågan 

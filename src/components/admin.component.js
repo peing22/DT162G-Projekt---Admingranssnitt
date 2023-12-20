@@ -308,7 +308,7 @@ export default function Admin() {
                         <>
                             <h3>{exercise.exercisename}</h3>
                             <p>{exercise.description}</p>
-                            <video src={`http://localhost:3050/uploads/${exercise.filename}`} width={100} controls>
+                            <video src={`http://localhost:3001/uploads/${exercise.filename}`} width={100} controls>
                                 Din webbläsare kan inte visa videon...
                             </video>
                             <br />
