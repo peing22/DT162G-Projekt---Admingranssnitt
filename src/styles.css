@@ -4,7 +4,7 @@ body {
     font-weight: 300;
     font-size: 14px;
     line-height: 22px;
-    color: #0d1f2b;
+    color: black;
     background-color: #e9f4fb;
 }
 
@@ -12,7 +12,7 @@ body {
     body {
         font-size: 20px;
         line-height: 32px;
-        background-color: #0d1f2b;
+        background-color: black;
     }
 }
 
@@ -23,7 +23,7 @@ main {
     margin: auto;
 }
 
-/* Rubriker */
+/* RUBRIKER */
 h1 {
     font-weight: 700;
     font-size: 32px;
@@ -52,7 +52,7 @@ h2 {
     text-transform: uppercase;
     margin-top: 40px;
     padding-top: 40px;
-    border-top: 2px solid #497697;
+    border-top: 2px solid #b5b5b5;
 }
 
 @media (min-width: 600px) {
@@ -78,10 +78,158 @@ h3 {
     }
 }
 
+
+/* IKONER */
+.fa-solid {
+    padding-left: 5px;
+}
+
+
+/* KNAPPAR */
+/* Standardinställningar */
+.login button,
+.logout button,
+.add-exercise button,
+.edit-btn,
+.save-btn,
+.cancel-btn,
+.delete-btn,
+.add-admin button {
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    transition: 0.3s;
+}
+
+@media (min-width: 600px) {
+
+    .login button,
+    .logout button,
+    .add-exercise button,
+    .edit-btn,
+    .save-btn,
+    .cancel-btn,
+    .delete-btn,
+    .add-admin button {
+        height: 40px;
+    }
+}
+
+.login button:hover,
+.logout button:hover,
+.add-exercise button:hover,
+.edit-btn:hover,
+.save-btn:hover,
+.cancel-btn:hover,
+.delete-btn:hover,
+.add-admin button:hover {
+    cursor: pointer;
+}
+
+/* Logga ut-knapp */
+.logout button {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Svart knapp */
+.login button,
+.logout button,
+.edit-btn {
+    color: white;
+    background-color: #626262;
+    box-shadow: 0 0 10px black inset, 0 0 2px black inset;
+}
+
+.login button:hover,
+.logout button:hover,
+.edit-btn:hover {
+    background-color: black;
+}
+
+/* Grön knapp */
+.add-exercise button,
+.save-btn,
+.add-admin button {
+    color: white;
+    background-color: #4d9749;
+    box-shadow: 0 0 10px #254a17 inset, 0 0 2px #254a17 inset;
+}
+
+.add-exercise button:hover,
+.save-btn:hover,
+.add-admin button:hover {
+    background-color: #254a17;
+}
+
+/* Senapsgul knapp */
+.edit-btn {
+    color: white;
+    background-color: #a88300;
+    box-shadow: 0 0 10px #584602 inset, 0 0 2px #584602 inset;
+}
+
+.edit-btn:hover {
+    background-color: #584602;
+}
+
+/* Röd knapp */
+.cancel-btn,
+.delete-btn {
+    color: white;
+    background-color: #974949;
+    box-shadow: 0 0 10px #4a1717 inset, 0 0 2px #4a1717 inset;
+}
+
+.cancel-btn:hover,
+.delete-btn:hover {
+    background-color: #4a1717;
+}
+
+
+/* TEXTAREA & INPUT */
+textarea {
+    height: 100px;
+    font-weight: 300;
+}
+
+input {
+    font-weight: 300;
+}
+
+@media (min-width: 600px) {
+
+    input,
+    textarea {
+        font-size: 18px;
+    }
+}
+
+
+/* FELMEDDELANDE */
+.error-msg {
+    text-align: center;
+    font-weight: 500;
+    line-height: normal;
+    color: rgb(200, 0, 0);
+}
+
+
+/* MEDDELANDE */
+.success-msg {
+    text-align: center;
+    font-weight: 500;
+    line-height: normal;
+    color: rgb(14, 167, 0);
+}
+
+
 /* LOGGA IN */
 .login {
     margin: auto;
-    background-color: #e9f4fb;
+    background-color: white;
     border-radius: 5px;
     padding: 30px;
 }
@@ -98,14 +246,15 @@ h3 {
     width: 100%;
     margin-bottom: 10px;
     padding: 5px;
-    border: 1px solid #49769774;
+    border: 1px solid #b5b5b5;
     border-radius: 5px;
+    background-color: #f6f6f6;
 }
 
 /* ADMINISTRERA */
 .admin {
     margin: auto;
-    background-color: #e9f4fb;
+    background-color: white;
     border-radius: 5px;
     padding: 30px;
 }
@@ -125,31 +274,6 @@ h3 {
     }
 }
 
-/* Logga ut-knapp */
-.logout button {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 30px;
-    background-color: #497697;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    transition: 0.3s;
-    box-shadow: 0 0 10px #17364a inset, 0 0 2px #17364a inset;
-}
-
-@media (min-width: 600px) {
-    .logout button {
-        height: 40px;
-    }
-}
-
-.logout button:hover {
-    background-color: #17364a;
-    cursor: pointer;
-}
-
 /* Lägg till övning */
 .add-exercise input[type="text"] {
     margin-bottom: 10px;
@@ -160,8 +284,9 @@ h3 {
     box-sizing: border-box;
     width: 100%;
     padding: 5px;
-    border: 1px solid #49769774;
+    border: 1px solid #b5b5b5;
     border-radius: 5px;
+    background-color: #f6f6f6;
 }
 
 .add-exercise input[type="file"] {
@@ -176,7 +301,7 @@ h3 {
 
 /* Tillagda övningar */
 .added-exercise {
-    border: 1px solid #49769774;
+    border: 1px solid #b5b5b5;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -220,23 +345,6 @@ h3 {
     border-radius: 5px;
 }
 
-.delete-btn {
-    width: 100%;
-    margin-top: 10px;
-    color: white;
-    background-color: #974949;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    transition: 0.3s;
-    box-shadow: 0 0 10px #4a1717 inset, 0 0 2px #4a1717 inset;
-}
-
-.delete-btn:hover {
-    background-color: #4a1717;
-    cursor: pointer;
-}
-
 /* Redigera övning */
 .added-exercise input[type="text"] {
     margin-bottom: 10px;
@@ -247,26 +355,9 @@ h3 {
     box-sizing: border-box;
     width: 100%;
     padding: 5px;
-    border: 1px solid #49769774;
-    background-color: #f6fcf2;
+    border: 1px solid #b5b5b5;
+    background-color: #f6f6f6;
     border-radius: 5px;
-}
-
-.save-btn {
-    width: 100%;
-    margin-top: 10px;
-    color: white;
-    background-color: #4d9749;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    transition: 0.3s;
-    box-shadow: 0 0 10px #254a17 inset, 0 0 2px #254a17 inset;
-}
-
-.save-btn:hover {
-    background-color: #254a17;
-    cursor: pointer;
 }
 
 /* Lägg till administratör */
@@ -275,88 +366,7 @@ h3 {
     width: 100%;
     margin-bottom: 10px;
     padding: 5px;
-    border: 1px solid #0d1f2b;
+    border: 1px solid #b5b5b5;
+    background-color: #f6f6f6;
     border-radius: 5px;
-}
-
-
-/* FELMEDDELANDE */
-.error-msg {
-    text-align: center;
-    font-weight: 500;
-    line-height: normal;
-    color: rgb(200, 0, 0);
-}
-
-/* MEDDELANDE */
-.success-msg {
-    text-align: center;
-    font-weight: 500;
-    line-height: normal;
-    color: rgb(14, 167, 0);
-}
-
-
-/* IKONER */
-.fa-solid {
-    padding-left: 5px;
-}
-
-
-/* KNAPPAR */
-.login button,
-.add-exercise button,
-.edit-btn,
-.cancel-btn,
-.add-admin button {
-    width: 100%;
-    margin-top: 10px;
-    background-color: #497697;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    transition: 0.3s;
-    box-shadow: 0 0 10px #17364a inset, 0 0 2px #17364a inset;
-}
-
-@media (min-width: 600px) {
-
-    .login button,
-    .add-exercise button,
-    .edit-btn,
-    .delete-btn,
-    .save-btn,
-    .cancel-btn,
-    .add-admin button {
-        height: 40px;
-    }
-}
-
-.login button:hover,
-.add-exercise button:hover,
-.edit-btn:hover,
-.cancel-btn:hover,
-.add-admin button:hover {
-    background-color: #17364a;
-    cursor: pointer;
-}
-
-
-/* TEXTAREA & INPUT */
-textarea {
-    height: 100px;
-    font-weight: 300;
-}
-
-input {
-    font-weight: 300;
-}
-
-@media (min-width: 600px) {
-
-    input,
-    textarea {
-        font-size: 18px;
-    }
 }
