@@ -18,9 +18,9 @@ export default function App() {
 const MainContent = () => {
   const { isLoggedIn } = useAuth();
 
+  // Renderar olika komponenter beroende på om användaren är inloggad eller inte
   return (
     <main>
-    {/* Renderar olika komponenter beroende på om användaren är inloggad eller inte */}
       {isLoggedIn ? (
         <Admin />
       ) : (
