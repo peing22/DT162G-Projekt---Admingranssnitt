@@ -37,6 +37,40 @@ export default function Admin() {
             // Återställer felmeddelande
             setAddError("");
 
+            // Skriver ut felmeddelande om namn och beskrivning saknas
+            if (!exercisename || !description) {
+                setAddError("Namn och beskrivning måste anges!");
+
+                // Tar bort felmeddelandet efter 5 sekunder
+                setTimeout(() => {
+                    setAddError("");
+                }, 5000);
+                return;
+            }
+
+            // Skriver ut felmeddelande om fil saknas
+            if (!file) {
+                setAddError("Videofil måste skickas med!");
+
+                // Tar bort felmeddelandet efter 5 sekunder
+                setTimeout(() => {
+                    setAddError("");
+                }, 5000);
+                return;
+            }
+
+            // Skriver ut felmeddelande om filen har ett ogiltigt videoformat
+            const allowedFormats = ["video/mp4", "video/webm", "video/avi", "video/ogg", "video/mov", "video/mpeg"];
+            if (!allowedFormats.includes(file.type)) {
+                setAddError("Ogiltigt filformat! Vänligen välj en fil i formatet MP4, WebM, AVI, OGG, MOV eller MPEG.");
+
+                // Tar bort felmeddelandet efter 5 sekunder
+                setTimeout(() => {
+                    setAddError("");
+                }, 10000);
+                return;
+            }
+
             // Skapar FormData-instans för att hantera multipart/form-data med filuppladdning
             const formData = new FormData();
             formData.append("exercisename", exercisename);
@@ -307,7 +341,7 @@ export default function Admin() {
                     ) : (
                         <>
                             <h3>{exercise.exercisename}</h3>
-                            
+
                             <div className="video-container">
                                 <div className="video-wrap">
                                     <video src={`http://localhost:3001/uploads/${exercise.filename}`} controls>
