@@ -263,7 +263,7 @@ export default function Admin() {
             // Loggar felmeddelande
             console.error("Felmeddelande:", error);
 
-            // Visar felmeddelande för användaren om inloggning misslyckas
+            // Visar felmeddelande för användaren om registrering misslyckas
             setRegisterError(error.response?.data.message || "Ett fel uppstod vid registrering!");
 
             // Tar bort felmeddelandet efter 5 sekunder
