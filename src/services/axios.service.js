@@ -28,18 +28,24 @@ instance.interceptors.response.use(
     async (err) => {
         const originalConfig = err.config;
 
+        // Om statuskoden är 401 och det inte är en retrysituation
         if (originalConfig.url !== "/login" && err.response) {
             if (err.response.status === 401 && !originalConfig._retry) {
                 originalConfig._retry = true;
 
                 try {
+                    // Försöker uppdatera accessToken genom att använda den refreshToken som är lagrad i localStorage
                     const respons = await instance.post("/refreshtoken", {
                         refreshToken: tokenService.getLocalRefreshToken(),
                     });
 
+                    // Extraherar accessToken från responsen
                     const { accessToken } = respons.data;
+
+                    // Anropar metod för att uppdatera localStorage med den nya accessToken
                     tokenService.updateLocalAccessToken(accessToken);
 
+                    // Återupprepar den ursprungliga förfrågan med uppdaterad accessToken
                     return instance(originalConfig);
 
                 } catch (_error) {
