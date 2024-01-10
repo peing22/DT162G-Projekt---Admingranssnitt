@@ -1,4 +1,4 @@
-# DT162G Projekt: Admingränssnitt
+# Projekt DT162G: Admingränssnitt
 Repo för del av projektarbete i kursen *JavaScriptbaserad Webbutveckling*.
 
 ## Getting Started with Create React App
